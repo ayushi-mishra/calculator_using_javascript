@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+Calculator Using JavaScript
+</title>
+
+<script>
+
+// insert() to insert the number in textview
+function insert(num) 
+{
+document.form1.textview.value = document.form1.textview.value + num;
+}
+// equal()  to return the result based on passed values
+function equal()
+{
+var exp = document.form1.textview.value;
+if(exp)
+{
+document.form1.textview.value = eval(exp)
+}
+}
+//backspace()  to remove the number at the end of the numeric series in textview
+function backspace()
+{
+var exp = document.form1.textview.value;
+document.form1.textview.value = exp.substring(0, exp.length - 1); // remove the element from total length ? 1 
+}
+</script>
+
+<!-- code for CSS -->
+<style>
+/* Outer layout of the Calculator. */
+.formstyle
+{
+width: 300px;
+height: 330px;
+margin: 20px auto;
+z-index: 12;
+padding: 20px;
+text-align: center;
+background-color: #e0e0eb;
+}
+
+/*  horizontal bar at the top */
+h1 {
+	text-align: center;
+	padding: 23px;
+	background-color: linear-gradient(to right, #CBCE91FF, #EA738DFF);
+	color: black;
+	}
+input:hover
+{
+background-color: green;
+}
+	
+*{
+margin: 0;
+padding: 0;
+}
+
+/* layout for calculator buttons */
+.btn{
+width: 50px;
+height: 50px;
+font-size: 25px;
+margin: 2px;
+cursor: pointer;
+background-color: #ff6666;
+color: white;
+
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to right, #CBCE91FF, #EA738DFF);
+  }
+/* display numbers, operations and results */
+.textview{
+width: 223px;
+margin: 5px;
+font-size: 25px;
+padding: 5px;
+background-color: lightgreen;
+}	
+
+.bubbles{
+  position: absolute;
+  bottom: -120px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 70px;
+  width: 100%;
+  justify-content: space-around;
+}
+.bubbles span{
+  height: 60px;
+  width: 60px;
+  background: rgba(255, 255, 255, 0.1);
+  animation: move 10s linear infinite;
+  position: relative;
+  overflow: hidden;
+}
+@keyframes move {
+  100%{
+    transform: translateY(-100vh);
+  }
+}
+.bubbles span.one{
+  animation-delay: 2.2s;
+  transform: scale(2.15)
+}
+.bubbles span.two{
+  animation-delay: 3.5s;
+  transform: scale(1.55)
+}
+.bubbles span.three{
+  animation-delay: 0.2s;
+  transform: scale(0.35)
+}
+.bubbles span.four{
+  animation-delay: 6s;
+  transform: scale(2.15)
+}
+.bubbles span.five{
+  animation-delay: 7s;
+  transform: scale(0.5)
+}
+.bubbles span.six{
+  animation-delay: 4s;
+  transform: scale(2.5)
+}
+.bubbles span.seven{
+  animation-delay: 3
+  transform: scale(1.5)
+}
+.bubbles span:before{
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 60px;
+  width: 40%;
+  transform: skew(45deg) translateX(150px);
+  background: rgba(255, 255, 255, 0.15);
+  animation: mirror 3s linear infinite;
+}
+@keyframes mirror {
+  100%{
+    transform: translateX(-450px);
+  }
+}
+.bubbles span.one:before{
+  animation-delay: 1.5s;
+}
+.bubbles span.two:before{
+  animation-delay: 3.5s;
+}
+.bubbles span.three:before{
+  animation-delay: 2.5s;
+}
+.bubbles span.four:before{
+  animation-delay: 7.5s;
+}
+.bubbles span.five:before{
+  animation-delay: 4.5s;
+}
+.bubbles span.six:before{
+  animation-delay: 0.5s;
+}
+.bubbles span.seven:before{
+  animation-delay: 6s;
+}	
+</style>
+</head>
+<body>
+	<div class="bubbles">
+  <span class="one"></span>
+  <span class="two"></span>
+  <span class="three"></span>
+  <span class="four"></span>
+  <span class="five"></span>
+  <span class="six"></span>
+  <span class="seven"></span>
+</div>
+
+
+<h1> Calculator Program in JavaScript </h1>
+ <div class= "formstyle">
+ <form name = "form1">
+ <input class= "textview" name = "textview">
+ </form>
+ <center>
+ <table >
+ <tr> 
+	<td> <input class = "btn" type = "button" value = "C" onclick = "form1.textview.value = ' ' " > </td>
+	<td> <input  class = "btn" type = "button" value = "B" onclick = "backspace()" > </td>
+	<td> <input  class = "btn" type = "button" value = "/" onclick = "insert('/')" > </td>
+	<td> <input class = "btn" type = "button" value = "x" onclick = "insert('*')" > </td>
+	</tr>
+	
+	 <tr> 
+	<td> <input class = "btn" type = "button" value = "7" onclick = "insert(7)" > </td>
+	<td> <input class = "btn" type = "button" value = "8" onclick = "insert(8)" > </td>
+	<td> <input class = "btn" type = "button" value = "9" onclick = "insert(9)" > </td>
+	<td> <input class = "btn" type = "button" value = "-" onclick = "insert('-')" > </td>
+	</tr>
+	
+	 <tr> 
+	<td> <input class = "btn" type = "button" value = "4" onclick = "insert(4)" > </td>
+	<td> <input class = "btn" type = "button" value = "5" onclick = "insert(5)" > </td>
+	<td> <input class = "btn" type = "button" value = "6" onclick = "insert(6)" > </td>
+	<td> <input class = "btn" type = "button" value = "+" onclick = "insert('+')" > </td>
+	</tr>
+	
+	 <tr> 
+	<td> <input class = "btn" type = "button" value = "1" onclick = "insert(1)" > </td>
+	<td> <input class = "btn" type = "button" value = "2" onclick = "insert(2)" > </td>
+	<td> <input class = "btn" type = "button" value = "3" onclick = "insert(3)" > </td>
+	<td rowspan = 5> <input class = "btn" style = "height: 110px" type = "button" value = "=" onclick = "equal()"> </td>
+	</tr>
+	<tr>
+	<td colspan = 2> <input class = "btn" style = "width: 106px" type = "button" value = "0" onclick = "insert(0)" > </td>
+	<td> <input class = "btn" type = "button" value = "." onclick = "insert('.')"> </td>
+	</tr>
+	</table>
+	</center>
+ </div>
+ </body>
+ </html>
+
+ 
